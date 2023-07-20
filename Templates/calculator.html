@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .calculator form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .calculator label {
+            color: #333;
+        }
+
+        .calculator select,
+        .calculator input[type="number"],
+        .calculator input[type="submit"] {
+            margin: 5px 0;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .calculator input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .calculator input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .calculator h2 {
+            text-align: center;
+            margin-top: 15px;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Simple Calculator</h1>
+        <form action="/calculate" method="POST">
+            <label for="num1">Enter first number:</label>
+            <input type="number" name="num1" required /><br>
+
+            <label for="operation">Select operation:</label>
+            <select name="operation" required>
+                <option value="add">Addition (+)</option>
+                <option value="subtract">Subtraction (-)</option>
+                <option value="multiply">Multiplication (*)</option>
+                <option value="divide">Division (/)</option>
+            </select><br>
+
+            <label for="num2">Enter second number:</label>
+            <input type="number" name="num2" required /><br>
+
+            <input type="submit" value="Calculate" />
+        </form>
+        {% if result is not none %}
+            <h2>Result: {{ result }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
